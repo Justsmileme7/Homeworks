@@ -1,6 +1,4 @@
 class Moving:
-    def __int__(self):
-        self.name = name
 
     def move(self):
         raise NotImplementedError('Somethig wrong')
@@ -31,15 +29,34 @@ class Tiger(Animal):
     def move(self):
         print('run')
 
+
 class Car(Transport):
+    def __init__(self):
+        self.is_engine_work = False
+
     def move(self):
-        print('drive')
+        if self.is_engine_work:
+            print('Car ride')
+        else:
+            print('Please launch the car')
+
     def launch(self):
-        print('start')
+        if self.is_engine_work:
+            print('Car is already started')
+        else:
+            self.is_engine_work = False
+            print('Car is working')
+
+
+for ob in (Duck(), Tiger()):
+    ob.voice()
+    ob.move()
 
 duck = Duck()
 duck.move()
 tiger = Tiger()
 tiger.move()
+tiger.voice()
 bmv = Car()
 bmv.move()
+bmv.launch()
